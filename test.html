@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .home-img {
+  position: absolute; /* Necessary for positioning absolute images */
+  width: 100%; /* Adjust width as needed */
+  height: auto; /* Adjust height as needed */
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 40%; /* Ensure images fill container */
+  opacity: 0; /* Hide initially */
+  transition: opacity 1s ease-in-out; /* Set transition for smooth fade */
+}
+
+.image.active {
+  opacity: 1; /* Make active image visible */
+}
+</style>
+<body>
+  <div class="home-img">
+    <img src="images/home.png" alt="Home Image" class="image active"> 
+     <img src="images/Coffee.png" alt="Coffee Image" height="400px" class="image">
+  </div>
+</body>
+<script>
+  const images = document.querySelectorAll('.home-img img');
+let currentImageIndex = 0;
+
+function changeImage() {
+  images[currentImageIndex].classList.remove('active');
+  currentImageIndex = (currentImageIndex + 1) % images.length;
+  images[currentImageIndex].classList.add('active');
+}
+
+setInterval(changeImage, 7000);
+</script>
+</html>
